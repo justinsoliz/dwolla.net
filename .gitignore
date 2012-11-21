@@ -1,0 +1,12 @@
+[Aa]ssets/
+[Dd]ebug/
+[Rr]elease/
+[Bb]in/
+[Oo]bj/
+*ReSharper.user
+_ReSharper.*/
+*.user
+*.suo
+*.sln.cache
+*.bak
+src/Dwolla.Tests/App.config
