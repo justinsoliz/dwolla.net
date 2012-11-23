@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Dwolla</id>
+    <version>1.0.0</version>
+    <authors>Justin Soliz</authors>
+    <owners>Justin Soliz</owners>
+    <licenseUrl>https://raw.github.com/justinsoliz/dwolla.net/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/justinsoliz/dwolla.net</projectUrl>
+    <iconUrl>https://www.dwolla.com/Content/images/dwolla-logo.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Dwolla .net is a .net api for http://www.dwolla.com. It includes support for users, contacts, transactions, requests, registration, and funding sources. For full documentation see http://developers.dwolla.com/dev/docs</description>
+    <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
+    <copyright>Copyright 2012</copyright>
+    <tags>dwolla, payment, ach, money</tags>
+  </metadata>
+</package>

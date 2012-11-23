@@ -1,0 +1,1 @@
+tools\nuget\nuget pack dwolla.net.nuspec -o build
