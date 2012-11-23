@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Dwolla</id>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <authors>Justin Soliz</authors>
     <owners>Justin Soliz</owners>
     <licenseUrl>https://raw.github.com/justinsoliz/dwolla.net/master/LICENSE</licenseUrl>
