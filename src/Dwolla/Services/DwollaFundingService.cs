@@ -73,6 +73,13 @@ namespace Dwolla.Services
             return Mapper<DwollaResponse<DwollaTransaction>>.MapFromJson(response.Content);
         }
 
+        /// <summary>
+        /// Deposit funds into dwolla account
+        /// Use this method to deposit funds from a bank account, and into a Dwolla 
+        /// account for the user with the given authorized access token. 
+        /// </summary>
+        /// <param name="options"></param>
+        /// <returns>Dwolla transaction</returns>
         public DwollaResponse<DwollaTransaction> Deposit(TransferOptions options)
         {
             var url = string.Format("{0}/{1}/deposit", Urls.FundingSources, options.FundsSource);
