@@ -55,6 +55,7 @@
     <Compile Include="ServiceTests\ContactsTests.cs" />
     <Compile Include="ServiceTests\DwollaServiceTest.cs" />
     <Compile Include="ServiceTests\FundingSourcesTests.cs" />
+    <Compile Include="ServiceTests\RegisterTests.cs" />
     <Compile Include="ServiceTests\RequestTests.cs" />
     <Compile Include="ServiceTests\TransactionTests.cs" />
     <Compile Include="ServiceTests\UserTests.cs" />

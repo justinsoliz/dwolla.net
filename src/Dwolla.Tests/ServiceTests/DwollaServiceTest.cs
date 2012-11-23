@@ -5,18 +5,20 @@ namespace Dwolla.Tests.ServiceTests
 {
     public class DwollaServiceTest
     {
-        protected string AppKey;
-        protected string AppSecret;
-        protected string OAuthToken;
+        protected string TestAppKey;
+        protected string TestAppSecret;
+        protected string TestEmail;
+        protected string TestOAuthToken;
         protected string TestPin;
         protected string TestFundId;
 
         [SetUp]
         public void setup()
         {
-            AppKey = ConfigurationManager.AppSettings["TestAppKey"];
-            AppSecret = ConfigurationManager.AppSettings["TestAppSecret"];
-            OAuthToken = ConfigurationManager.AppSettings["TestAccessToken"];
+            TestAppKey = ConfigurationManager.AppSettings["TestAppKey"];
+            TestAppSecret = ConfigurationManager.AppSettings["TestAppSecret"];
+            TestEmail = ConfigurationManager.AppSettings["TestEmail"];
+            TestOAuthToken = ConfigurationManager.AppSettings["TestAccessToken"];
             TestPin = ConfigurationManager.AppSettings["TestPin"];
             TestFundId = ConfigurationManager.AppSettings["TestFundId"];
         }

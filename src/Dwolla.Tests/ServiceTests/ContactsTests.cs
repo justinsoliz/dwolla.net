@@ -16,7 +16,7 @@ namespace Dwolla.Tests.ServiceTests
             var contactService = new DwollaContactService();
 
             // act
-            DwollaResponse<IList<DwollaContact>> response = contactService.GetUserContacts(OAuthToken);
+            DwollaResponse<IList<DwollaContact>> response = contactService.GetUserContacts(TestOAuthToken);
 
             // assert
             response.Success.ShouldBeTrue();
@@ -30,7 +30,7 @@ namespace Dwolla.Tests.ServiceTests
 
             // act
             DwollaResponse<IList<DwollaContact>> response = contactService.GetNearbyContacts(
-                AppKey, AppSecret);
+                TestAppKey, TestAppSecret);
 
             // assert
             response.Success.ShouldBeTrue();

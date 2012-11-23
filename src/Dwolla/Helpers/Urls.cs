@@ -17,6 +17,11 @@
             get { return BaseUrl + "/fundingsources"; }
         }
 
+        public static string Register
+        {
+            get { return BaseUrl + "/register"; }
+        }
+
         public static string Requests
         {
             get { return BaseUrl + "/requests"; }

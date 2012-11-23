@@ -17,7 +17,7 @@ namespace Dwolla.Tests.ServiceTests
 
             // act
             DwollaResponse<IList<DwollaFund>> response = fundingService
-                .List(OAuthToken);
+                .List(TestOAuthToken);
 
             // assert
             response.Success.ShouldBeTrue();
@@ -31,7 +31,7 @@ namespace Dwolla.Tests.ServiceTests
 
             // act
             DwollaResponse<DwollaFund> response = fundingService
-                .GetById(OAuthToken, TestFundId);
+                .GetById(TestOAuthToken, TestFundId);
 
             // assert
             response.Success.ShouldBeTrue();
@@ -44,7 +44,7 @@ namespace Dwolla.Tests.ServiceTests
             var fundingService = new DwollaFundingService();
 
             var options = new TransferOptions {
-                OAuthToken = OAuthToken,
+                OAuthToken = TestOAuthToken,
                 Pin = TestPin,
                 FundsSource = TestFundId,
                 Amount = 1
@@ -65,7 +65,7 @@ namespace Dwolla.Tests.ServiceTests
             var fundingService = new DwollaFundingService();
 
             var options = new TransferOptions {
-                OAuthToken = OAuthToken,
+                OAuthToken = TestOAuthToken,
                 Pin = TestPin,
                 FundsSource = TestFundId,
                 Amount = 1

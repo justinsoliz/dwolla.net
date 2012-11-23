@@ -28,7 +28,7 @@ namespace Dwolla.Tests.ServiceTests
             var transactionService = new DwollaTransactionService();
 
             var options = new SendTransactionOptions {
-                OAuthToken = OAuthToken,
+                OAuthToken = TestOAuthToken,
                 Pin = TestPin,
                 DestinationId = _dwollaReflectorId,
                 Amount = 1,
@@ -55,7 +55,7 @@ namespace Dwolla.Tests.ServiceTests
             var options = new ListTransactionOptions {
 
                 // OAuth token required
-                OAuthToken = OAuthToken,
+                OAuthToken = TestOAuthToken,
 
                 // get transactions from last 2 days
                 SinceDate = DateTime.Now.AddDays(-2).ToString()
@@ -78,7 +78,7 @@ namespace Dwolla.Tests.ServiceTests
             var options = new TransactionStatsOptions {
 
                 // OAuth token required
-                OAuthToken = OAuthToken,
+                OAuthToken = TestOAuthToken,
 
                 // get transactions from the previous month
                 StartDate = DateTime.Now.AddMonths(-1).ToString()
@@ -102,7 +102,7 @@ namespace Dwolla.Tests.ServiceTests
 
             // act
             DwollaResponse<DwollaTransaction> response = transactionService
-                .GetById(transactionId, OAuthToken);
+                .GetById(transactionId, TestOAuthToken);
 
             // assert
             response.Success.ShouldBeTrue();
@@ -118,7 +118,7 @@ namespace Dwolla.Tests.ServiceTests
 
             // act
             DwollaResponse<DwollaTransaction> response = transactionService
-                .GetById(transactionId, AppKey, AppSecret);
+                .GetById(transactionId, TestAppKey, TestAppSecret);
 
             // assert
             response.Success.ShouldBeTrue();

@@ -14,7 +14,7 @@ namespace Dwolla.Tests.ServiceTests
             var balanceService = new DwollaBalanceService();
 
             // act
-            var balance = balanceService.Get(OAuthToken);
+            var balance = balanceService.Get(TestOAuthToken);
 
             // assert
             balance.Success.ShouldBeTrue();

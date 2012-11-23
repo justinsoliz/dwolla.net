@@ -15,7 +15,7 @@ namespace Dwolla.Tests.ServiceTests
             var userService = new DwollaUserService();
 
             // act
-            DwollaResponse<DwollaUser> response = userService.GetFullAccount(OAuthToken);
+            DwollaResponse<DwollaUser> response = userService.GetFullAccount(TestOAuthToken);
 
             // assert
             response.Success.ShouldBeTrue();
@@ -29,7 +29,7 @@ namespace Dwolla.Tests.ServiceTests
             string userId = "812-608-0250";
 
             // act
-            DwollaResponse<DwollaUser> response = userService.GetBasicAccount(userId, AppKey, AppSecret);
+            DwollaResponse<DwollaUser> response = userService.GetBasicAccount(userId, TestAppKey, TestAppSecret);
 
             // assert
             response.Success.ShouldBeTrue();
