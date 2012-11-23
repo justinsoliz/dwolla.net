@@ -25,7 +25,7 @@ end
 desc "Merge"
 exec :merge do |cmd|
 	cmd.command = 'tools\ilmerge\ilmerge.exe'
-	cmd.parameters ='/out:src\Dwolla\bin\release\Dwolla.dll /targetplatform:v4,"C:\Windows\Microsoft.NET\Framework\v4.0.30319" src\Dwolla\bin\release\Dwolla.dll src\Dwolla\bin\release\Newtonsoft.Json.dll /closed /internalize'
+	cmd.parameters ='/out:src\Dwolla\bin\release\Dwolla.dll /targetplatform:v4,"C:\Windows\Microsoft.NET\Framework\v4.0.30319" src\Dwolla\bin\release\Dwolla.dll src\Dwolla\bin\release\Newtonsoft.Json.dll /closed /internalize /allowDup'
 	puts 'Merging complete'
 end
 
