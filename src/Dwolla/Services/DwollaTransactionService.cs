@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Dwolla.Helpers;
 using Dwolla.Models;
+using RestSharp;
 
 namespace Dwolla.Services
 {
@@ -11,34 +12,24 @@ namespace Dwolla.Services
         {
             var url = Urls.Transactions + "/send";
 
-            var urlWithParams = ParameterBuilder.ApplyAllParameters(options, url);
+            var client = new RestClient();
 
-            Console.WriteLine("Url: {0}", url);
+            var data = new {
+                oauth_token = options.OAuthToken,
+                pin = options.Pin,
+                destinationId = options.DestinationId,
+                amount = options.Amount
+            };
 
-            var rawResponse = Requestor.PostString(urlWithParams, options);
+            var request = new RestRequest(url, Method.POST) {
+                RequestFormat = DataFormat.Json
+            };
 
-            Console.WriteLine("Response: {0}", rawResponse);
+            request.AddBody(data);
 
-            return new DwollaResponse<string>();
+            var response = client.Execute(request);
 
-            //var client = new RestClient();
-
-            //var data = new {
-            //    oauth_token = options.OAuthToken,
-            //    pin = options.Pin,
-            //    destinationId = options.DestinationId,
-            //    amount = options.Amount
-            //};
-
-            //var request = new RestRequest(url, Method.POST) {
-            //    RequestFormat = DataFormat.Json
-            //};
-
-            //request.AddBody(data);
-
-            //var response = client.Execute(request);
-
-            //return Mapper<DwollaResponse<string>>.MapFromJson(response.Content);
+            return Mapper<DwollaResponse<string>>.MapFromJson(response.Content);
         }
 
         public DwollaResponse<IList<DwollaTransaction>> GetByUser(ListTransactionOptions options)

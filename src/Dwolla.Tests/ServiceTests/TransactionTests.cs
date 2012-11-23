@@ -29,9 +29,8 @@ namespace Dwolla.Tests.ServiceTests
 
             var options = new SendTransactionOptions {
                 OAuthToken = OAuthToken,
-                //Pin = "1111", 
+                Pin = TestPin,
                 DestinationId = _dwollaReflectorId,
-                //Amount = new decimal(1.00),
                 Amount = 1,
                 FacilitatorAmount = 0
             };

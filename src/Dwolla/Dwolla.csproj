@@ -56,6 +56,7 @@
     <Compile Include="Helpers\Urls.cs" />
     <Compile Include="Models\DwollaBalance.cs" />
     <Compile Include="Models\DwollaContact.cs" />
+    <Compile Include="Models\DwollaFund.cs" />
     <Compile Include="Models\DwollaResponse.cs" />
     <Compile Include="Models\DwollaTransaction.cs" />
     <Compile Include="Models\DwollaUser.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\DwollaBalanceService.cs" />
     <Compile Include="Services\DwollaContactService.cs" />
+    <Compile Include="Services\DwollaFundingService.cs" />
     <Compile Include="Services\DwollaRequestService.cs" />
     <Compile Include="Services\DwollaTransactionService.cs" />
     <Compile Include="Services\DwollaUserService.cs" />
@@ -70,6 +72,7 @@
     <Compile Include="Services\RequestTransactionOptions.cs" />
     <Compile Include="Services\SendTransactionOptions.cs" />
     <Compile Include="Services\TransactionStatsOptions.cs" />
+    <Compile Include="Services\TransferOptions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

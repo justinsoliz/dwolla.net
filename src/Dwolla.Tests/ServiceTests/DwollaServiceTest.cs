@@ -8,7 +8,8 @@ namespace Dwolla.Tests.ServiceTests
         protected string AppKey;
         protected string AppSecret;
         protected string OAuthToken;
-        protected string MyPin;
+        protected string TestPin;
+        protected string TestFundId;
 
         [SetUp]
         public void setup()
@@ -16,7 +17,8 @@ namespace Dwolla.Tests.ServiceTests
             AppKey = ConfigurationManager.AppSettings["TestAppKey"];
             AppSecret = ConfigurationManager.AppSettings["TestAppSecret"];
             OAuthToken = ConfigurationManager.AppSettings["TestAccessToken"];
-            MyPin = ConfigurationManager.AppSettings["MyPin"];
+            TestPin = ConfigurationManager.AppSettings["TestPin"];
+            TestFundId = ConfigurationManager.AppSettings["TestFundId"];
         }
     }
 }

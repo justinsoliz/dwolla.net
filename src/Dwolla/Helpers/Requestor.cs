@@ -30,7 +30,7 @@ namespace Dwolla.Helpers
             using (Stream stream = request.GetRequestStream())
                 stream.Write(bytes, 0, bytes.Length);
 
-            //return ExecuteWebRequest(request);
+            return ExecuteWebRequest(request);
         }
 
         public static string Delete(string url)

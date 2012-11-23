@@ -12,9 +12,14 @@
             get { return BaseUrl + "/contacts"; }
         }
 
+        public static string FundingSources
+        {
+            get { return BaseUrl + "/fundingsources"; }
+        }
+
         public static string Requests
         {
-            get { return BaseUrl + "/requests";  }
+            get { return BaseUrl + "/requests"; }
         }
 
         public static string Transactions
