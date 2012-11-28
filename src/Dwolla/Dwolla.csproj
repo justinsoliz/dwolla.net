@@ -37,6 +37,7 @@
       <HintPath>..\packages\RestSharp.104.1\lib\net4\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
@@ -46,6 +47,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Gateway\DwollaCallback.cs" />
+    <Compile Include="Gateway\DwollaCheckoutRequest.cs" />
+    <Compile Include="Gateway\DwollaCheckoutResponse.cs" />
+    <Compile Include="Gateway\DwollaOrderItem.cs" />
+    <Compile Include="Gateway\DwollaPurchaseOrder.cs" />
+    <Compile Include="Gateway\DwollaServerCheckoutApi.cs" />
+    <Compile Include="Helpers\DwollaSignatureUtil.cs" />
     <Compile Include="Helpers\IJsonSerializer.cs" />
     <Compile Include="Helpers\JsonSerializer.cs" />
     <Compile Include="Helpers\Mapper.cs" />

@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GatewayTests\DwollaServerCheckoutTests.cs" />
     <Compile Include="ServiceTests\BalanceTests.cs" />
     <Compile Include="Helpers\ShouldExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
