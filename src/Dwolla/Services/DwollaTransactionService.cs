@@ -18,7 +18,12 @@ namespace Dwolla.Services
                 oauth_token = options.OAuthToken,
                 pin = options.Pin,
                 destinationId = options.DestinationId,
-                amount = options.Amount
+                amount = options.Amount,
+                assumeCosts = options.AssumeCosts,
+                destinationType = options.DestinationType,
+                facilitatorAmount = options.FacilitatorAmount,
+                fundsSource = options.FundsSource,
+                notes = options.Notes,
             };
 
             var request = new RestRequest(url, Method.POST) {
