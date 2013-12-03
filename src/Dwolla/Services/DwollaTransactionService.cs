@@ -75,6 +75,34 @@ namespace Dwolla.Services
             return Mapper<DwollaResponse<DwollaTransactionStats>>.MapFromJson(rawResponse);
         }
 
+        public DwollaResponse<DwollaRefund> Refund(RefundOptions options)
+        {
+            var url = Urls.Transactions + "/refund";
+
+            var client = new RestClient();
+
+            var data = new
+            {
+                oauth_token = options.OAuthToken,
+                pin = options.Pin,
+                amount = options.Amount,
+                fundsSource = options.FundsSource,
+                notes = options.Notes,
+                transactionId = options.TransactionId
+            };
+
+            var request = new RestRequest(url, Method.POST)
+            {
+                RequestFormat = DataFormat.Json
+            };
+
+            request.AddBody(data);
+
+            var response = client.Execute(request);
+
+            return Mapper<DwollaResponse<DwollaRefund>>.MapFromJson(response.Content);
+        }
+
         public DwollaResponse<DwollaTransaction> GetById(string transactionId, string oAuthToken)
         {
             var parameters = new Dictionary<string, object> { { "oauth_token", oAuthToken } };
