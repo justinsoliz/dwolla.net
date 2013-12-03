@@ -2,17 +2,18 @@
 
 namespace Dwolla.Models
 {
-    public class DwollaRequest
+    public class DwollaRequestTransaction
     {
         /// <summary>
-        /// Request ID
+        /// Transaction ID
         /// </summary>
         public string Id { get; set; }
 
+        public string RequestId { get; set; }
         public decimal Amount { get; set; }
-        
-        public DateTime DateRequested { get; set; }
-        
+        public DateTime SentDate { get; set; }
+        public DateTime ClearingDate { get; set; }
+
         /// <summary>
         /// Transaction status. Values: processed, pending, cancelled, failed, and 
         /// reclaimed. Fees bound to any transaction have the same status as the 
@@ -29,19 +30,5 @@ namespace Dwolla.Models
         /// The requested user entity
         /// </summary>
         public DwollaContact Destination { get; set; }
-
-        public DwollaRequestTransaction Transaction { get; set; }
-
-        public string Notes { get; set; }
-
-        public string CancelledBy { get; set; }
-
-        public DateTime? DateCancelled { get; set; }
-
-        public bool SenderAssumeFee { get; set; }
-
-        public bool SenderAssumeAdditionalFees { get; set; }
-
-        //public DwollaFee[] AdditionalFees { get; set; }
     }
 }

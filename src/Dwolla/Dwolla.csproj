@@ -64,6 +64,8 @@
     <Compile Include="Helpers\SimpleJson.cs" />
     <Compile Include="Helpers\HttpHelper.cs" />
     <Compile Include="Helpers\Urls.cs" />
+    <Compile Include="Models\DwollaFee.cs" />
+    <Compile Include="Models\DwollaRefund.cs" />
     <Compile Include="Models\DwollaBalance.cs" />
     <Compile Include="Models\DwollaContact.cs" />
     <Compile Include="Models\DwollaFund.cs" />
@@ -73,6 +75,7 @@
     <Compile Include="Models\DwollaUser.cs" />
     <Compile Include="Models\DwollaTransactionStats.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\RefundOptions.cs" />
     <Compile Include="Services\DwollaBalanceService.cs" />
     <Compile Include="Services\DwollaContactService.cs" />
     <Compile Include="Services\DwollaFundingService.cs" />
