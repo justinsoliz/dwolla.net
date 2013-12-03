@@ -27,7 +27,9 @@ namespace Dwolla.Services
                 sourceType = options.SourceType,
                 amount = options.Amount,
                 facilitatorAmount = options.FacilitatorAmount,
-                notes = options.Notes
+                notes = options.Notes,
+                senderAssumeCosts = options.SenderAssumeCosts,
+                senderAssumeAdditionalFees = options.SenderAssumeAdditionalFees
             };
 
             var request = new RestRequest(url, Method.POST) {

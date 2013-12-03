@@ -65,5 +65,15 @@ namespace Dwolla.Services
         /// </summary>
         [JsonProperty("fundsSource")]
         public string FundsSource { get; set; }
+
+        /// <summary>
+        /// Set to true if the sending user will assume all Facilitator fees. 
+        /// Set to false if the destination user will assume all Facilitator 
+        /// fees. Does not affect the Dwolla fee.
+        /// 
+        /// Default: false
+        /// </summary>
+        [JsonProperty("assumeAdditionalFees")]
+        public bool AssumeAdditionalFees { get; set; }
     }
 }
