@@ -36,12 +36,32 @@ namespace Dwolla.Services
         /// dsiabled for transaction. Cannot exceed 25% of the 'amount'.
         /// </summary>
         [JsonProperty("facilitatorAmount")]
-        public decimal FacilitatorAmount { get; set; }
+        public decimal? FacilitatorAmount { get; set; }
 
         /// <summary>
         /// Note to attach to the transaction. Limited to 250 characters.
         /// </summary>
         [JsonProperty("notes")]
         public string Notes { get; set; }
+
+        /// <summary>
+        /// Set to true if the fulfilling user (the user who will send the money) 
+        /// will assume the Dwolla fee. Set to false if the destination user will 
+        /// assume the Dwolla fee. Does not affect facilitator fees.
+        /// 
+        /// Default: false
+        /// </summary>
+        [JsonProperty("senderAssumeCosts")]
+        public bool SenderAssumeCosts { get; set; }
+
+        /// <summary>
+        /// Set to true if the fulfilling user (the user who will send the money) 
+        /// will assume all Facilitator fees. Set to false if the destination user 
+        /// will assume all Facilitator fees. Does not affect the Dwolla fee.
+        /// 
+        /// Default: false
+        /// </summary>
+        [JsonProperty("senderAssumeAdditionalFees")]
+        public bool SenderAssumeAdditionalFees { get; set; }
     }
 }

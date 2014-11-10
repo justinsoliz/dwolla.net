@@ -4,11 +4,15 @@ using Dwolla.Models;
 
 namespace Dwolla.Services
 {
-    public class DwollaBalanceService
+    public class DwollaBalanceService : DwollaService
     {
+        public DwollaBalanceService(bool sandbox = false)
+            : base(sandbox)
+        { }
+
         public DwollaBalance Get(string oAuthToken)
         {
-            var url = Urls.Balances + "?oauth_token=" + 
+            var url = Urls.Balances(Sandbox) + "?oauth_token=" + 
                 HttpUtility.UrlEncode(oAuthToken);
 
             var response = Requestor.GetString(url);

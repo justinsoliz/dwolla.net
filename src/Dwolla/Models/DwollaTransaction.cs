@@ -17,7 +17,9 @@ namespace Dwolla.Models
         public string DestinationName { get; set; }
 
         public string SourceId { get; set; }
-
+        
+        public string SourceName { get; set; }
+        
         [JsonProperty("Type")]
         public string TransactionType { get; set; }
 
@@ -28,5 +30,7 @@ namespace Dwolla.Models
         public string ClearingDate { get; set; }
 
         public string Notes { get; set; }
+
+        //public DwollaFee[] Fees { get; set; }
     }
 }
