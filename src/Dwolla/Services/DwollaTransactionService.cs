@@ -6,11 +6,15 @@ using RestSharp;
 
 namespace Dwolla.Services
 {
-    public class DwollaTransactionService
+    public class DwollaTransactionService : DwollaService
     {
+        public DwollaTransactionService(bool sandbox = false)
+            : base(sandbox)
+        { }
+
         public DwollaResponse<string> SendFunds(SendTransactionOptions options)
         {
-            var url = Urls.Transactions + "/send";
+            var url = Urls.Transactions(Sandbox) + "/send";
 
             var client = new RestClient();
 
@@ -49,7 +53,7 @@ namespace Dwolla.Services
                     {"skip", options.Limit}
                 };
 
-            string encodedUrl = HttpHelper.BuildUrl(Urls.Transactions, parameters);
+            string encodedUrl = HttpHelper.BuildUrl(Urls.Transactions(Sandbox), parameters);
 
             var rawResponse = Requestor.GetString(encodedUrl);
 
@@ -58,7 +62,7 @@ namespace Dwolla.Services
 
         public DwollaResponse<DwollaTransactionStats> GetTransactionStats(TransactionStatsOptions options)
         {
-            var url = Urls.Transactions + "/stats";
+            var url = Urls.Transactions(Sandbox) + "/stats";
 
             var parameters = new Dictionary<string, object>()
                 {
@@ -77,7 +81,7 @@ namespace Dwolla.Services
 
         public DwollaResponse<DwollaRefund> Refund(RefundOptions options)
         {
-            var url = Urls.Transactions + "/refund";
+            var url = Urls.Transactions(Sandbox) + "/refund";
 
             var client = new RestClient();
 
@@ -107,7 +111,7 @@ namespace Dwolla.Services
         {
             var parameters = new Dictionary<string, object> { { "oauth_token", oAuthToken } };
 
-            var endpoint = string.Format("{0}/{1}", Urls.Transactions, transactionId);
+            var endpoint = string.Format("{0}/{1}", Urls.Transactions(Sandbox), transactionId);
 
             string encodedUrl = HttpHelper.BuildUrl(endpoint, parameters);
 
@@ -126,7 +130,7 @@ namespace Dwolla.Services
                     {"client_secret", appSecret}
                 };
 
-            var endpoint = string.Format("{0}/{1}", Urls.Transactions, transactionId);
+            var endpoint = string.Format("{0}/{1}", Urls.Transactions(Sandbox), transactionId);
 
             string encodedUrl = HttpHelper.BuildUrl(endpoint, parameters);
 

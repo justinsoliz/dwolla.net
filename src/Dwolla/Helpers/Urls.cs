@@ -2,44 +2,48 @@
 {
     internal static class Urls
     {
-        public static string Balances
+        public static string Balances(bool sandbox = false)
         {
-            get { return BaseUrl + "/balance"; }
+            return BaseUrl(sandbox) + "/balance";
         }
 
-        public static string Contacts
+        public static string Contacts(bool sandbox = false)
         {
-            get { return BaseUrl + "/contacts"; }
+            return BaseUrl(sandbox) + "/contacts";
         }
 
-        public static string FundingSources
+        public static string FundingSources(bool sandbox = false)
         {
-            get { return BaseUrl + "/fundingsources"; }
+            return BaseUrl(sandbox) + "/fundingsources";
         }
 
-        public static string Register
+        public static string Register(bool sandbox = false)
         {
-            get { return BaseUrl + "/register"; }
+            return BaseUrl(sandbox) + "/register";
         }
 
-        public static string Requests
+        public static string Requests(bool sandbox = false)
         {
-            get { return BaseUrl + "/requests"; }
+            return BaseUrl(sandbox) + "/requests";
         }
 
-        public static string Transactions
+        public static string Transactions(bool sandbox = false)
         {
-            get { return BaseUrl + "/transactions"; }
+            return BaseUrl(sandbox) + "/transactions";
         }
 
-        public static string Users
+        public static string Users(bool sandbox = false)
         {
-            get { return BaseUrl + "/users"; }
+            return BaseUrl(sandbox) + "/users";
         }
 
-        public static string BaseUrl
+        public static string BaseUrl(bool sandbox = false)
         {
-            get { return "https://www.dwolla.com/oauth/rest"; }
+            if (sandbox)
+                return "https://uat.dwolla.com/oauth/rest";
+            else
+                return "https://www.dwolla.com/oauth/rest";
+            
             //get { return "http://www.dwolla.com/oauth/rest"; }
         }
     }

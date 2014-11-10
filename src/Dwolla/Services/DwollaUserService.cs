@@ -5,11 +5,15 @@ using Dwolla.Models;
 
 namespace Dwolla.Services
 {
-    public class DwollaUserService
+    public class DwollaUserService : DwollaService
     {
+        public DwollaUserService(bool sandbox = false)
+            : base(sandbox)
+        { }
+
         public DwollaResponse<DwollaUser> GetFullAccount(string oAuthToken)
         {
-            string url = Urls.Users + "?oauth_token=" +
+            string url = Urls.Users(Sandbox) + "?oauth_token=" +
                 HttpUtility.UrlEncode(oAuthToken);
 
             var rawResponse = Requestor.GetString(url);
@@ -28,7 +32,7 @@ namespace Dwolla.Services
                     {"client_secret", secret }
                 };
 
-            var endPoint = string.Format("{0}/{1}", Urls.Users, userId);
+            var endPoint = string.Format("{0}/{1}", Urls.Users(Sandbox), userId);
             string encodedUrl = HttpHelper.BuildUrl(endPoint, parameters);
 
             var rawResponse = Requestor.GetString(encodedUrl);

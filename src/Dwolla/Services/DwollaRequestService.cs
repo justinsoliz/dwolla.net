@@ -6,8 +6,12 @@ using RestSharp;
 
 namespace Dwolla.Services
 {
-    public class DwollaRequestService
+    public class DwollaRequestService : DwollaService
     {
+        public DwollaRequestService(bool sandbox = false)
+            : base(sandbox)
+        { }
+
         /// <summary>
         /// Request money
         /// Use this method to request funds from a source user, originating 
@@ -17,7 +21,7 @@ namespace Dwolla.Services
         /// <returns></returns>
         public DwollaResponse<string> Request(RequestTransactionOptions options)
         {
-            var url = Urls.Requests + "?oauth_token=" +
+            var url = Urls.Requests(Sandbox) + "?oauth_token=" +
                 HttpUtility.UrlEncode(options.OAuthToken);
 
             var client = new RestClient();
@@ -52,7 +56,7 @@ namespace Dwolla.Services
         /// <returns></returns>
         public DwollaResponse<DwollaRequest> Fulfill(FulfillOptions options)
         {
-            var url = string.Format("{0}/{1}/fulfill?oauth_token={2}", Urls.Requests,
+            var url = string.Format("{0}/{1}/fulfill?oauth_token={2}", Urls.Requests(Sandbox),
                 options.RequestId, HttpUtility.UrlEncode(options.OAuthToken));
 
             var client = new RestClient();
@@ -85,7 +89,7 @@ namespace Dwolla.Services
         /// <returns></returns>
         public DwollaResponse<IList<DwollaRequest>> ListPending(string testOAuthToken)
         {
-            var url = Urls.Requests + "?oauth_token=" +
+            var url = Urls.Requests(Sandbox) + "?oauth_token=" +
                 HttpUtility.UrlEncode(testOAuthToken);
 
             var response = Requestor.GetString(url);
@@ -103,7 +107,7 @@ namespace Dwolla.Services
         /// <returns>DwollaRequest</returns>
         public DwollaResponse<DwollaRequest> GetRequest(string oAuthToken, string requestId)
         {
-            var url = string.Format("{0}/{1}?oauth_token={2}", Urls.Requests, 
+            var url = string.Format("{0}/{1}?oauth_token={2}", Urls.Requests(Sandbox), 
                 requestId, HttpUtility.UrlEncode(oAuthToken));
 
             var response = Requestor.GetString(url);

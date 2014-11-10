@@ -5,11 +5,15 @@ using RestSharp;
 
 namespace Dwolla.Services
 {
-    public class DwollaRegisterService
+    public class DwollaRegisterService : DwollaService
     {
+        public DwollaRegisterService(bool sandbox = false)
+            : base(sandbox)
+        { }
+
         public DwollaResponse<DwollaUser> RegisterUser(RegisterOptions options)
         {
-            var url = Urls.Register;
+            var url = Urls.Register(Sandbox);
 
             var client = new RestClient();
 

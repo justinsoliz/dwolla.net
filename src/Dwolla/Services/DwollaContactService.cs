@@ -4,8 +4,12 @@ using Dwolla.Models;
 
 namespace Dwolla.Services
 {
-    public class DwollaContactService
+    public class DwollaContactService : DwollaService
     {
+        public DwollaContactService(bool sandbox = false)
+            : base(sandbox)
+        { }
+
         /// <summary>
         /// Use this method to retrieve the contacts' information for the 
         /// user associated with the authorized access token.
@@ -28,7 +32,7 @@ namespace Dwolla.Services
             if (!string.IsNullOrWhiteSpace(search))
                 parameters.Add("search", search);
 
-            string encodedUrl = HttpHelper.BuildUrl(Urls.Contacts, parameters);
+            string encodedUrl = HttpHelper.BuildUrl(Urls.Contacts(Sandbox), parameters);
 
             string rawResponse = Requestor.GetString(encodedUrl);
 
@@ -61,7 +65,7 @@ namespace Dwolla.Services
                     {"limit", limit}
                 };
 
-            var endpoint = string.Format("{0}/{1}", Urls.Contacts, "nearby");
+            var endpoint = string.Format("{0}/{1}", Urls.Contacts(Sandbox), "nearby");
             string encodedUrl = HttpHelper.BuildUrl(endpoint, parameters);
 
             var rawResponse = Requestor.GetString(encodedUrl);

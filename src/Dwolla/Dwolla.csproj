@@ -75,6 +75,7 @@
     <Compile Include="Models\DwollaUser.cs" />
     <Compile Include="Models\DwollaTransactionStats.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\DwollaService.cs" />
     <Compile Include="Services\RefundOptions.cs" />
     <Compile Include="Services\DwollaBalanceService.cs" />
     <Compile Include="Services\DwollaContactService.cs" />
