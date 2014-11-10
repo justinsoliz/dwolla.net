@@ -36,7 +36,7 @@ namespace Dwolla.Services
         /// dsiabled for transaction. Cannot exceed 25% of the 'amount'.
         /// </summary>
         [JsonProperty("facilitatorAmount")]
-        public decimal FacilitatorAmount { get; set; }
+        public decimal? FacilitatorAmount { get; set; }
 
         /// <summary>
         /// Note to attach to the transaction. Limited to 250 characters.

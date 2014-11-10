@@ -30,7 +30,7 @@ namespace Dwolla.Models
         /// </summary>
         public DwollaContact Destination { get; set; }
 
-        public DwollaRequestTransaction Transaction { get; set; }
+        public DwollaTransaction Transaction { get; set; }
 
         public string Notes { get; set; }
 
