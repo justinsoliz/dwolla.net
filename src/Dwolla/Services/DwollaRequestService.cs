@@ -23,9 +23,7 @@ namespace Dwolla.Services
         {
             var url = Urls.Requests(Sandbox) + "?oauth_token=" +
                 HttpUtility.UrlEncode(options.OAuthToken);
-
-            var client = new RestClient();
-
+            
             var data = new {
                 sourceId = options.SourceId,
                 sourceType = options.SourceType,
@@ -42,7 +40,7 @@ namespace Dwolla.Services
 
             request.AddBody(data);
 
-            var response = client.Execute(request);
+            var response = Client.Execute(request);
 
             return Mapper<DwollaResponse<string>>.MapFromJson(response.Content);
         }
@@ -58,9 +56,7 @@ namespace Dwolla.Services
         {
             var url = string.Format("{0}/{1}/fulfill?oauth_token={2}", Urls.Requests(Sandbox),
                 options.RequestId, HttpUtility.UrlEncode(options.OAuthToken));
-
-            var client = new RestClient();
-
+            
             var data = new {
                 pin = options.Pin,
                 amount = options.Amount,
@@ -75,7 +71,7 @@ namespace Dwolla.Services
 
             request.AddBody(data);
 
-            var response = client.Execute(request);
+            var response = Client.Execute(request);
 
             return Mapper<DwollaResponse<DwollaRequest>>.MapFromJson(response.Content);
         }
@@ -89,7 +85,7 @@ namespace Dwolla.Services
         /// <returns></returns>
         public DwollaResponse<IList<DwollaRequest>> ListPending(string testOAuthToken)
         {
-            var url = Urls.Requests(Sandbox) + "?oauth_token=" +
+            var url = Urls.Requests(Sandbox, true) + "?oauth_token=" +
                 HttpUtility.UrlEncode(testOAuthToken);
 
             var response = Requestor.GetString(url);
@@ -107,7 +103,7 @@ namespace Dwolla.Services
         /// <returns>DwollaRequest</returns>
         public DwollaResponse<DwollaRequest> GetRequest(string oAuthToken, string requestId)
         {
-            var url = string.Format("{0}/{1}?oauth_token={2}", Urls.Requests(Sandbox), 
+            var url = string.Format("{0}/{1}?oauth_token={2}", Urls.Requests(Sandbox, true), 
                 requestId, HttpUtility.UrlEncode(oAuthToken));
 
             var response = Requestor.GetString(url);
