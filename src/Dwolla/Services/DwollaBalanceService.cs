@@ -12,7 +12,7 @@ namespace Dwolla.Services
 
         public DwollaBalance Get(string oAuthToken)
         {
-            var url = Urls.Balances(Sandbox) + "?oauth_token=" + 
+            var url = Urls.Balances(Sandbox, true) + "?oauth_token=" + 
                 HttpUtility.UrlEncode(oAuthToken);
 
             var response = Requestor.GetString(url);

@@ -21,7 +21,7 @@ namespace Dwolla.Services
         /// <returns></returns>
         public DwollaResponse<string> Request(RequestTransactionOptions options)
         {
-            var url = Urls.Requests(Sandbox) + "?oauth_token=" +
+            var url = Urls.Requests(Sandbox, true) + "?oauth_token=" +
                 HttpUtility.UrlEncode(options.OAuthToken);
             
             var data = new {
@@ -54,7 +54,7 @@ namespace Dwolla.Services
         /// <returns></returns>
         public DwollaResponse<DwollaRequest> Fulfill(FulfillOptions options)
         {
-            var url = string.Format("{0}/{1}/fulfill?oauth_token={2}", Urls.Requests(Sandbox),
+            var url = string.Format("{0}/{1}/fulfill?oauth_token={2}", Urls.Requests(Sandbox, true),
                 options.RequestId, HttpUtility.UrlEncode(options.OAuthToken));
             
             var data = new {

@@ -14,8 +14,9 @@ namespace Dwolla.Services
 
         public DwollaService(bool sandbox = false)
         {
-            Client = new RestClient(Urls.BaseUrl(Sandbox));
             Sandbox = sandbox;
+            Client = new RestClient(Urls.BaseUrl(Sandbox));
+            
         }
     }
 }

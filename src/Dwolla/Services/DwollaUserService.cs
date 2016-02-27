@@ -13,7 +13,7 @@ namespace Dwolla.Services
 
         public DwollaResponse<DwollaUser> GetFullAccount(string oAuthToken)
         {
-            string url = Urls.Users(Sandbox) + "?oauth_token=" +
+            string url = Urls.Users(Sandbox, true) + "?oauth_token=" +
                 HttpUtility.UrlEncode(oAuthToken);
 
             var rawResponse = Requestor.GetString(url);
@@ -32,7 +32,7 @@ namespace Dwolla.Services
                     {"client_secret", secret }
                 };
 
-            var endPoint = string.Format("{0}/{1}", Urls.Users(Sandbox), userId);
+            var endPoint = string.Format("{0}/{1}", Urls.Users(Sandbox, true), userId);
             string encodedUrl = HttpHelper.BuildUrl(endPoint, parameters);
 
             var rawResponse = Requestor.GetString(encodedUrl);

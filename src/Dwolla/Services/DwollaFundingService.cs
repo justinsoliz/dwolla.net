@@ -56,7 +56,7 @@ namespace Dwolla.Services
         /// <returns>Dwolla transaction</returns>
         public DwollaResponse<DwollaTransaction> Withdraw(TransferOptions options)
         {
-            var url = string.Format("{0}/{1}/withdraw", Urls.FundingSources(Sandbox), options.FundsSource);
+            var url = string.Format("{0}/{1}/withdraw", Urls.FundingSources(Sandbox, true), options.FundsSource);
             
             var data = new {
                 oauth_token = options.OAuthToken,
@@ -84,7 +84,7 @@ namespace Dwolla.Services
         /// <returns>Dwolla transaction</returns>
         public DwollaResponse<DwollaTransaction> Deposit(TransferOptions options)
         {
-            var url = string.Format("{0}/{1}/deposit", Urls.FundingSources(Sandbox), options.FundsSource);
+            var url = string.Format("{0}/{1}/deposit", Urls.FundingSources(Sandbox, true), options.FundsSource);
             
             var data = new {
                 oauth_token = options.OAuthToken,
