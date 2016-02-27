@@ -32,7 +32,7 @@ namespace Dwolla.Services
             if (!string.IsNullOrWhiteSpace(search))
                 parameters.Add("search", search);
 
-            string encodedUrl = HttpHelper.BuildUrl(Urls.Contacts(Sandbox), parameters);
+            string encodedUrl = HttpHelper.BuildUrl(Urls.Contacts(Sandbox, true), parameters);
 
             string rawResponse = Requestor.GetString(encodedUrl);
 
@@ -65,7 +65,7 @@ namespace Dwolla.Services
                     {"limit", limit}
                 };
 
-            var endpoint = string.Format("{0}/{1}", Urls.Contacts(Sandbox), "nearby");
+            var endpoint = string.Format("{0}/{1}", Urls.Contacts(Sandbox, true), "nearby");
             string encodedUrl = HttpHelper.BuildUrl(endpoint, parameters);
 
             var rawResponse = Requestor.GetString(encodedUrl);

@@ -21,7 +21,7 @@ namespace Dwolla.Services
         /// <returns></returns>
         public DwollaResponse<IList<DwollaFund>> List(string oAuthToken)
         {
-            var url = Urls.FundingSources(Sandbox) + "?oauth_token=" +
+            var url = Urls.FundingSources(Sandbox, true) + "?oauth_token=" +
                 HttpUtility.UrlEncode(oAuthToken);
 
             var response = Requestor.GetString(url);
@@ -39,7 +39,7 @@ namespace Dwolla.Services
         /// <returns>Dwolla transaction</returns>
         public DwollaResponse<DwollaFund> GetById(string oAuthToken, string testFundId)
         {
-            var url = string.Format("{0}/{1}?oauth_token={2}", Urls.FundingSources(Sandbox),
+            var url = string.Format("{0}/{1}?oauth_token={2}", Urls.FundingSources(Sandbox, true),
                 testFundId, HttpUtility.UrlEncode(oAuthToken));
 
             var response = Requestor.GetString(url);
@@ -56,10 +56,8 @@ namespace Dwolla.Services
         /// <returns>Dwolla transaction</returns>
         public DwollaResponse<DwollaTransaction> Withdraw(TransferOptions options)
         {
-            var url = string.Format("{0}/{1}/withdraw", Urls.FundingSources(Sandbox), options.FundsSource);
-
-            var client = new RestClient();
-
+            var url = string.Format("{0}/{1}/withdraw", Urls.FundingSources(Sandbox, true), options.FundsSource);
+            
             var data = new {
                 oauth_token = options.OAuthToken,
                 pin = options.Pin,
@@ -72,7 +70,7 @@ namespace Dwolla.Services
 
             request.AddBody(data);
 
-            var response = client.Execute(request);
+            var response = Client.Execute(request);
 
             return Mapper<DwollaResponse<DwollaTransaction>>.MapFromJson(response.Content);
         }
@@ -86,10 +84,8 @@ namespace Dwolla.Services
         /// <returns>Dwolla transaction</returns>
         public DwollaResponse<DwollaTransaction> Deposit(TransferOptions options)
         {
-            var url = string.Format("{0}/{1}/deposit", Urls.FundingSources(Sandbox), options.FundsSource);
-
-            var client = new RestClient();
-
+            var url = string.Format("{0}/{1}/deposit", Urls.FundingSources(Sandbox, true), options.FundsSource);
+            
             var data = new {
                 oauth_token = options.OAuthToken,
                 pin = options.Pin,
@@ -102,7 +98,7 @@ namespace Dwolla.Services
 
             request.AddBody(data);
 
-            var response = client.Execute(request);
+            var response = Client.Execute(request);
 
             return Mapper<DwollaResponse<DwollaTransaction>>.MapFromJson(response.Content);
         }
