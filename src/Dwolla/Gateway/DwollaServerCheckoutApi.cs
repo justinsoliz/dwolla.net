@@ -15,7 +15,7 @@ namespace Dwolla.Gateway
         /// <summary>Dwolla application secret</summary>
         public string AppSecret { get; set; }
 
-        public const string RequestUrl = "https://www.dwolla.com/payment/request";
+        public const string RequestUrl = "https://www.dwolla.com/";
         public const string CheckoutUrl = "https://www.dwolla.com/payment/checkout/{CheckoutId}";
 
         /// <summary>
@@ -73,9 +73,9 @@ namespace Dwolla.Gateway
         /// <summary>Executes the Dwolla Checkout REST Request. This method can be overridden if you wish to use a different REST library to execute the actual request. </summary>
         protected virtual DwollaCheckoutResponse ExecuteRestRequest(DwollaCheckoutRequest checkoutRequest)
         {
-            var client = new RestClient();
-
-            var req = new RestRequest(RequestUrl, Method.POST) {
+            var client = new RestClient(RequestUrl);
+            
+            var req = new RestRequest("payment/request", Method.POST) {
                 RequestFormat = DataFormat.Json
             }
                 .AddBody(checkoutRequest);

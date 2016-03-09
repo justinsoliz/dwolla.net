@@ -14,9 +14,9 @@ namespace Dwolla.Services
 
         public DwollaResponse<string> SendFunds(SendTransactionOptions options)
         {
-            var url = Urls.Transactions(Sandbox) + "/send";
+            var resource =  Urls.Transactions(Sandbox) + "/send";
 
-            var client = new RestClient();
+            //var client = new RestClient(Urls.BaseUrl(Sandbox));
 
             var data = new {
                 oauth_token = options.OAuthToken,
@@ -31,13 +31,13 @@ namespace Dwolla.Services
                 assumeAdditionalFees = options.AssumeAdditionalFees
             };
 
-            var request = new RestRequest(url, Method.POST) {
+            var request = new RestRequest(resource, Method.POST) {
                 RequestFormat = DataFormat.Json
             };
 
             request.AddBody(data);
 
-            var response = client.Execute(request);
+            var response = Client.Execute(request);
 
             return Mapper<DwollaResponse<string>>.MapFromJson(response.Content);
         }
@@ -53,7 +53,7 @@ namespace Dwolla.Services
                     {"skip", options.Limit}
                 };
 
-            string encodedUrl = HttpHelper.BuildUrl(Urls.Transactions(Sandbox), parameters);
+            string encodedUrl = HttpHelper.BuildUrl(Urls.Transactions(Sandbox, true), parameters);
 
             var rawResponse = Requestor.GetString(encodedUrl);
 
@@ -62,7 +62,7 @@ namespace Dwolla.Services
 
         public DwollaResponse<DwollaTransactionStats> GetTransactionStats(TransactionStatsOptions options)
         {
-            var url = Urls.Transactions(Sandbox) + "/stats";
+            var resource = Urls.Transactions(Sandbox) + "/stats";
 
             var parameters = new Dictionary<string, object>()
                 {
@@ -72,7 +72,7 @@ namespace Dwolla.Services
                     {"endDate", options.EndDate}
                 };
 
-            string encodedUrl = HttpHelper.BuildUrl(url, parameters);
+            string encodedUrl = HttpHelper.BuildUrl(resource, parameters);
 
             var rawResponse = Requestor.GetString(encodedUrl);
 
@@ -83,7 +83,7 @@ namespace Dwolla.Services
         {
             var url = Urls.Transactions(Sandbox) + "/refund";
 
-            var client = new RestClient();
+            //var client = new RestClient(Urls.BaseUrl());
 
             var data = new
             {
@@ -102,7 +102,7 @@ namespace Dwolla.Services
 
             request.AddBody(data);
 
-            var response = client.Execute(request);
+            var response = Client.Execute(request);
 
             return Mapper<DwollaResponse<DwollaRefund>>.MapFromJson(response.Content);
         }
@@ -111,7 +111,7 @@ namespace Dwolla.Services
         {
             var parameters = new Dictionary<string, object> { { "oauth_token", oAuthToken } };
 
-            var endpoint = string.Format("{0}/{1}", Urls.Transactions(Sandbox), transactionId);
+            var endpoint = string.Format("{0}/{1}", Urls.Transactions(Sandbox, true), transactionId);
 
             string encodedUrl = HttpHelper.BuildUrl(endpoint, parameters);
 
@@ -130,7 +130,7 @@ namespace Dwolla.Services
                     {"client_secret", appSecret}
                 };
 
-            var endpoint = string.Format("{0}/{1}", Urls.Transactions(Sandbox), transactionId);
+            var endpoint = string.Format("{0}/{1}", Urls.Transactions(Sandbox, true), transactionId);
 
             string encodedUrl = HttpHelper.BuildUrl(endpoint, parameters);
 

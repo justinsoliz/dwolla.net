@@ -14,9 +14,7 @@ namespace Dwolla.Services
         public DwollaResponse<DwollaUser> RegisterUser(RegisterOptions options)
         {
             var url = Urls.Register(Sandbox);
-
-            var client = new RestClient();
-
+            
             var data = new {
                 client_id = options.ClientId,
                 client_secret = options.ClientSecret,
@@ -44,7 +42,7 @@ namespace Dwolla.Services
 
             request.AddBody(data);
 
-            var response = client.Execute(request);
+            var response = Client.Execute(request);
 
             return Mapper<DwollaResponse<DwollaUser>>.MapFromJson(response.Content);
         }
